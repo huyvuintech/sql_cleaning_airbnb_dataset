@@ -1,4 +1,4 @@
-# sql_datacleaning
+# Cleaning airbnb dataset using SQL
 This repository is made to update on projects that utilize SQL for data cleaning.
 
 ### Source: 
