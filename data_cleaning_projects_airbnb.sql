@@ -26,7 +26,7 @@ FROM PortfolioProject.dbo.airbnb2;
 -- First we need to add a primary key to the table so that we can use it to remove duplicated values. 
 ALTER TABLE PortfolioProject.dbo.airbnb2 ADD userkey INT identity(1,1) not null PRIMARY KEY
 
--- Delete duplicates values
+-- Delete duplicates values (Not best practice - best is to save to a temp table to continue, yet for the purpose of this exercise, we will delete the duplicates)
 DELETE e FROM PortfolioProject.dbo.airbnb2 e
     INNER JOIN
     (
