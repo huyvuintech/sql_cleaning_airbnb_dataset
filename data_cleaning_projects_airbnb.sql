@@ -136,7 +136,7 @@ WHERE construction_year IS NULL;
 SELECT DISTINCT CHARINDEX('$',price)
 FROM PortfolioProject.dbo.airbnb2
 
-SELECT SUBSTRING(price, CHARINDEX('$',price)+1,100)
+SELECT SUBSTRING(price, CHARINDEX('$',price)+1,len(price))
 FROM PortfolioProject.dbo.airbnb2
 
 -- We will create a new column with int value and convert old price values to this column and name this new_price
@@ -150,7 +150,7 @@ INNER JOIN
 (
 	SELECT userkey,
 			id, 
-			CAST(REPLACE(TRIM(SUBSTRING(price, CHARINDEX('$',price)+1,100)),',','') AS INT) AS price2
+			CAST(REPLACE(TRIM(SUBSTRING(price, CHARINDEX('$',price)+1,len(price))),',','') AS INT) AS price2
 	FROM PortfolioProject.dbo.airbnb2
 ) AS b
 ON a.userkey = b.userkey AND a.id = b.id;
@@ -170,7 +170,7 @@ INNER JOIN
 (
 	SELECT userkey,
 			id, 
-			CAST(REPLACE(TRIM(SUBSTRING(service_fee, CHARINDEX('$',service_fee)+1,100)),',','') AS INT) AS servicefee2
+			CAST(REPLACE(TRIM(SUBSTRING(service_fee, CHARINDEX('$',service_fee)+1,len(service_fee))),',','') AS INT) AS servicefee2
 	FROM PortfolioProject.dbo.airbnb2
 ) AS b
 ON a.userkey = b.userkey AND a.id = b.id;
